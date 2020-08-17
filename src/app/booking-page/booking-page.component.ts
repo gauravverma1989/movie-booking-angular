@@ -10,17 +10,19 @@ import * as $ from 'jquery';
 })
 
 export class BookingPageComponent implements OnInit {
-  // movie="";
-  // showhidediv: boolean;
 
   constructor(private router: Router) { }
 
-  websiteList: any = ['ItSolutionStuff.com', 'HDTuto.com', 'Nicesnippets.com']
-  statusList: any =['Open', 'Delivered']
+  timingAList: any =['10:00', '11:00', '13:00', '17:00', '20:00' ]
+  timingBList: any =['10:00', '11:00', '13:00' ]
+  timingCList: any =['10:00', '11:00', '13:00', '15:00' ]
+  timingDList: any =['07:00', '12:00', '14:00', '18:00']
+  timingEList: any =[ '12:00', '14:00' ]
 
-  form = new FormGroup({
-    website: new FormControl('', Validators.required),
-    status: new FormControl('', Validators.required)
+    form = new FormGroup({
+    movie: new FormControl('', Validators.required),
+    timingcontrol: new FormControl('', Validators.required),
+    numbercontrol: new FormControl('', Validators.required)
   });
   
   get f(){
@@ -37,22 +39,17 @@ export class BookingPageComponent implements OnInit {
   ngOnInit(): void {
 
     /*----------------------------------------------*/
-  $(document).ready(function() {
-  
-    $("#source").change(function() {
+
+    $('#select_box').change(function () {
+      var select=$(this).find(':selected').val();        
+       $(".hide").hide();
+       $('#' + select).show();
       
-      var el = $(this) ;
-      
-      if(el.val() === "ItSolutionStuff.com" ) {
-      $("#status").append("   <option>SHIPPED</option>");
-      }
-        else if(el.val() === "HDTuto.com" ) {
-          $("#status option:last-child").remove() ; }
-    });
-    
-  });
+            }).change();
+
   /*-----------------------------------------------*/
 
   }
+
 
 }

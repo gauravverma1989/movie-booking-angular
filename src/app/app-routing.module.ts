@@ -17,8 +17,10 @@ const routes: Routes = [
     path: 'BookMovie',
     component: BookingPageComponent,
   },
+
   
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
